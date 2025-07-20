@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "config/material-tailwind-theme-provider"
+import ReactQueryClientProviders from "config/ReactQueryClientProvider"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -24,7 +25,9 @@ export default function RootLayout({ children }) {
             referrerPolicy="no-referrer"
           />
         </head>
-        <body className={inter.className}>{children}</body>
+        <ReactQueryClientProviders>
+          <body className={inter.className}>{children}</body>
+        </ReactQueryClientProviders>
       </html>
     </ThemeProvider>
   )
